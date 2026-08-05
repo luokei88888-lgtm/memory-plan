@@ -1,0 +1,48 @@
+{
+  "cloud": true,
+  "pages": [
+    "pages/home/home",
+    "pages/chat/chat",
+    "pages/plan/plan",
+    "pages/plans/plans",
+    "pages/material/material",
+    "pages/review/review",
+    "pages/report/report",
+    "pages/me/me"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F2F4F7",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "今日",
+    "backgroundColor": "#F2F4F7",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#9AA8B4",
+    "selectedColor": "#2F6F6A",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "今日",
+        "iconPath": "assets/tab-home.png",
+        "selectedIconPath": "assets/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "对话",
+        "iconPath": "assets/tab-chat.png",
+        "selectedIconPath": "assets/tab-chat-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "assets/tab-me.png",
+        "selectedIconPath": "assets/tab-me-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

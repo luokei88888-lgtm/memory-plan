@@ -1,0 +1,159 @@
+page {
+  /* Ink Desk · 书桌墨色体系（日间） */
+  --ink: #1c2b3a;
+  --ink-soft: #3d5166;
+  --paper: #f2f4f7;
+  --card: #ffffff;
+  --accent: #2f6f6a;
+  --accent-deep: #245854;
+  --accent-soft: #e4f0ee;
+  --gold: #c9953a;
+  --gold-soft: #f7efd9;
+  --danger: #c96b5b;
+  --warn: #c9a35b;
+  --ok: #3b8f6e;
+  --line: #e2e8ef;
+  --muted: #7a8b9c;
+  --radius: 24rpx;
+  --radius-sm: 16rpx;
+  --shadow: 0 8rpx 32rpx rgba(28, 43, 58, 0.06);
+
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 28rpx;
+  line-height: 1.55;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue',
+    'Microsoft YaHei', sans-serif;
+}
+
+/* 夜间：与 Logo 深色场景一致 */
+.theme-dark {
+  --ink: #e8eef2;
+  --ink-soft: #b7c4d0;
+  --paper: #121a24;
+  --card: #1a2634;
+  --accent: #3d9b8f;
+  --accent-deep: #7ecfc4;
+  --accent-soft: #24353a;
+  --gold: #e0c06a;
+  --gold-soft: #3a3424;
+  --danger: #d98a7c;
+  --warn: #d4b36a;
+  --ok: #5cb890;
+  --line: #2a3544;
+  --muted: #8a97a5;
+  --shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.28);
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  box-sizing: border-box;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.ai-disclaimer {
+  margin: 0;
+  padding: 0;
+  font-size: 22rpx;
+  line-height: 1.4;
+  color: var(--muted);
+  opacity: 0.9;
+}
+
+.ai-disclaimer-bar {
+  flex-shrink: 0;
+  padding: 10rpx 28rpx 4rpx;
+  text-align: center;
+  font-size: 22rpx;
+  line-height: 1.4;
+  color: var(--muted);
+  background: transparent;
+}
+
+.section-title {
+  margin: 28rpx 0 16rpx;
+  font-size: 32rpx;
+  font-weight: 650;
+  color: var(--ink);
+  letter-spacing: 1rpx;
+}
+
+.section-hint {
+  margin: -8rpx 0 20rpx;
+  color: var(--muted);
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow);
+  border: 1rpx solid rgba(226, 232, 239, 0.9);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 22rpx 40rpx;
+  border: none;
+  line-height: 1.3;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-primary[disabled] {
+  opacity: 0.55;
+}
+
+.btn-ghost {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.btn-ghost::after {
+  border: none;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64rpx 40rpx;
+  color: var(--muted);
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 80rpx 0;
+  color: var(--muted);
+  font-size: 26rpx;
+}
+
+.chip {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 22rpx;
+}

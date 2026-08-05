@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的计划",
+  "navigationBarBackgroundColor": "#F2F4F7",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {}
+}

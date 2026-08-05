@@ -1,0 +1,99 @@
+<view class="page theme-{{themeMode}}">
+  <view class="header">
+    <view class="header-left">
+      <view class="brand-row">
+        <image class="brand-logo" src="/images/logo.jpg" mode="aspectFit" />
+        <view class="greeting">{{greeting}}</view>
+      </view>
+      <view class="date-line">{{dateLine}}</view>
+    </view>
+    <!-- 方案 E：顶栏快切，显示「点了会变成什么」：白天显示月亮，夜间显示太阳 -->
+    <view
+      class="theme-quick"
+      bindtap="onToggleTheme"
+      hover-class="theme-quick-hover"
+    >
+      <image
+        class="theme-quick-icon"
+        src="{{isDark ? '/images/icon-sun.png' : '/images/icon-moon.png'}}"
+        mode="aspectFit"
+      />
+    </view>
+  </view>
+
+  <!-- 今日待复习 -->
+  <view class="task-card">
+    <view class="task-top">
+      <view class="task-label">今日待复习</view>
+      <view class="ring" style="{{ringStyle}}">
+        <view class="ring-inner">
+          <text class="ring-text">{{reviewProgress}}%</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="task-main">
+      <view class="task-num">{{todayCount}}</view>
+      <view class="task-unit">
+        <view class="task-unit-title">张卡片待复习</view>
+        <view class="task-hint">完成后记忆强度会自动提升</view>
+      </view>
+    </view>
+
+    <view class="task-actions">
+      <view
+        class="btn-main {{todayCount > 0 ? '' : 'btn-main-disabled'}}"
+        bindtap="goReview"
+      >{{todayCount > 0 ? '开始复习' : '暂无待复习'}}</view>
+      <view class="btn-sub" bindtap="goChat">制定新计划</view>
+    </view>
+  </view>
+
+  <!-- 进行中的计划 -->
+  <view class="plan-card" wx:if="{{latestPlan}}" bindtap="goPlan" data-id="{{latestPlan._id}}">
+    <view class="plan-top">
+      <view class="plan-label">{{latestPlan.status === 'draft' ? '待上传资料' : (latestPlan.status === 'pending_confirm' ? '待确认的计划' : (latestPlan.status === 'paused' ? '已暂停的计划' : '进行中的计划'))}}</view>
+      <view class="plan-manage" catchtap="goPlans">管理 ></view>
+    </view>
+    <view class="plan-title">{{latestPlan.title}}</view>
+    <view class="plan-bar">
+      <view class="plan-bar-fill" style="width: {{planProgress}}%;"></view>
+    </view>
+    <view class="plan-meta">{{planWeekText}}</view>
+  </view>
+
+  <view class="plan-empty" wx:elif="{{!loading}}" bindtap="goChat">
+    <view class="plan-empty-title">还没有进行中的计划</view>
+    <view class="plan-empty-desc">点这里或下方场景，开始制定学习计划</view>
+  </view>
+
+  <!-- 场景入口 -->
+  <view class="section-row">
+    <view class="section-title">场景入口</view>
+    <view class="section-link" bindtap="goChat">一键带入对话 ></view>
+  </view>
+
+  <view class="scene-grid">
+    <view
+      class="scene-card tone-{{item.tone}}"
+      wx:for="{{scenes}}"
+      wx:key="id"
+      data-prompt="{{item.prompt}}"
+      data-scene="{{item.id}}"
+      bindtap="goChat"
+    >
+      <view class="scene-icon scene-icon-{{item.icon}}">
+        <text class="icon-glyph" wx:if="{{item.icon === 'search'}}">⌕</text>
+        <text class="icon-glyph" wx:elif="{{item.icon === 'grid'}}">▦</text>
+        <text class="icon-glyph" wx:elif="{{item.icon === 'star'}}">★</text>
+        <text class="icon-glyph" wx:elif="{{item.icon === 'heart'}}">♥</text>
+        <text class="icon-glyph" wx:elif="{{item.icon === 'lang'}}">文</text>
+        <text class="icon-glyph" wx:else>书</text>
+      </view>
+      <view class="scene-card-title">{{item.title}}</view>
+      <view class="scene-card-desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading-state">加载中…</view>
+</view>

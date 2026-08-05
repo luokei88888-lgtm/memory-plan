@@ -1,0 +1,39 @@
+<view class="page theme-{{themeMode}}">
+  <view class="tabs">
+    <view
+      class="tab {{scope === 'home' ? 'tab-on' : ''}}"
+      data-scope="home"
+      bindtap="switchScope"
+    >进行中</view>
+    <view
+      class="tab {{scope === 'archived' ? 'tab-on' : ''}}"
+      data-scope="archived"
+      bindtap="switchScope"
+    >已归档</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading-state">加载中…</view>
+  <block wx:elif="{{plans.length}}">
+    <view
+      class="plan-card"
+      wx:for="{{plans}}"
+      wx:key="_id"
+      data-id="{{item._id}}"
+      bindtap="goPlan"
+    >
+      <view class="plan-main">
+        <view class="plan-title">{{item.title}}</view>
+        <view class="muted plan-goal">{{item.goal}}</view>
+      </view>
+      <view class="plan-side">
+        <view class="status-pill status-{{item.status || 'active'}}">{{item.statusLabel}}</view>
+        <view class="arrow">›</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="empty-box">
+    <view class="empty-title">{{emptyText}}</view>
+    <view class="muted" wx:if="{{scope === 'home'}}">去对话页制定一个新计划</view>
+    <view class="btn-link" wx:if="{{scope === 'home'}}" bindtap="goChat">去制定计划</view>
+  </view>
+</view>

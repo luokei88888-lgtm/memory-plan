@@ -1,0 +1,57 @@
+<view class="page review-page theme-{{themeMode}}" wx:if="{{!loading && !finished && current}}">
+  <view class="top-bar">
+    <view class="progress-text">{{index + 1}} / {{cards.length}}</view>
+    <view class="progress-track">
+      <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
+    </view>
+  </view>
+
+  <view class="stage">
+    <view class="ai-disclaimer review-ai-tip">{{aiDisclaimer}}</view>
+    <view class="flashcard">
+      <view class="topic-chip">{{current.topic}}</view>
+      <view class="question">{{current.question}}</view>
+      <view class="hint muted" wx:if="{{!showAnswer}}">先在脑中回忆，再点下方揭晓</view>
+      <block wx:else>
+        <view class="divider"></view>
+        <view class="ans-label">参考答案</view>
+        <text selectable class="ans-text">{{current.answer}}</text>
+      </block>
+    </view>
+  </view>
+
+  <!-- 百词斩式：操作固定在底部 -->
+  <view class="action-dock">
+    <view wx:if="{{!showAnswer}}" class="btn-main-full" bindtap="reveal">显示答案</view>
+    <view wx:else class="rate-dock">
+      <view class="rate bad" data-q="1" bindtap="rate">
+        <view class="rate-title">忘了</view>
+        <view class="rate-sub">明天再来</view>
+      </view>
+      <view class="rate mid" data-q="3" bindtap="rate">
+        <view class="rate-title">模糊</view>
+        <view class="rate-sub">缩短间隔</view>
+      </view>
+      <view class="rate good" data-q="5" bindtap="rate">
+        <view class="rate-title">记住了</view>
+        <view class="rate-sub">拉长间隔</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="page done theme-{{themeMode}}" wx:elif="{{finished && reviewed > 0}}">
+  <view class="done-icon">✓</view>
+  <view class="done-title">本轮复习完成</view>
+  <view class="muted">已复习 {{reviewed}} 张卡片</view>
+  <view class="btn-main-full done-btn" bindtap="backHome">回首页</view>
+</view>
+
+<view class="page done theme-{{themeMode}}" wx:elif="{{finished}}">
+  <view class="done-icon soft">○</view>
+  <view class="done-title">今天没有待复习</view>
+  <view class="muted">去对话页制定计划，或稍后再来</view>
+  <view class="btn-main-full done-btn" bindtap="backHome">回首页</view>
+</view>
+
+<view class="page loading-state theme-{{themeMode}}" wx:elif="{{loading}}">加载中…</view>

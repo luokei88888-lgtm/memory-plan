@@ -1,0 +1,96 @@
+<view class="page theme-{{themeMode}}">
+  <scroll-view
+    class="msgs"
+    scroll-y
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-with-animation
+  >
+    <view class="welcome" wx:if="{{showWelcome && !messages.length}}">
+      <image class="welcome-avatar" src="/images/logo.jpg" mode="aspectFit" />
+      <view class="welcome-title">今天想学点什么？</view>
+      <view class="welcome-desc">告诉我目标、时间和基础，再上传你的资料，我帮你制定计划并生成复习卡片</view>
+      <view class="ai-disclaimer">{{aiDisclaimer}}</view>
+      <view class="welcome-chips">
+        <view
+          class="welcome-chip tone-{{item.tone}}"
+          wx:for="{{quickPrompts}}"
+          wx:key="title"
+          data-prompt="{{item.prompt}}"
+          bindtap="onQuickTap"
+        >{{item.title}}</view>
+      </view>
+    </view>
+
+    <view
+      id="msg-{{index}}"
+      class="row {{item.role === 'user' ? 'row-user' : 'row-ai'}}"
+      wx:for="{{messages}}"
+      wx:key="index"
+    >
+      <image class="avatar" src="/images/logo.jpg" mode="aspectFit" wx:if="{{item.role !== 'user'}}" />
+      <view class="bubble">
+        <text selectable>{{item.content}}</text>
+        <view
+          wx:if="{{item.planId && item.needUpload}}"
+          class="plan-link"
+          data-id="{{item.planId}}"
+          bindtap="openUpload"
+        >上传学习资料 ›</view>
+        <view
+          wx:elif="{{item.planId}}"
+          class="plan-link"
+          data-id="{{item.planId}}"
+          bindtap="openPlan"
+        >查看学习计划 ›</view>
+      </view>
+    </view>
+
+    <view wx:if="{{sending}}" class="row row-ai">
+      <image class="avatar" src="/images/logo.jpg" mode="aspectFit" />
+      <view class="bubble typing">
+        <view class="dot"></view>
+        <view class="dot"></view>
+        <view class="dot"></view>
+      </view>
+    </view>
+    <view class="msgs-pad"></view>
+  </scroll-view>
+
+  <view class="ai-disclaimer-bar">{{aiDisclaimer}}</view>
+
+  <!-- 底部输入坞：快捷标签 + 输入框一体 -->
+  <view class="dock">
+    <scroll-view
+      class="quick-bar"
+      scroll-x
+      enable-flex
+      show-scrollbar="{{false}}"
+      wx:if="{{!showWelcome || messages.length}}"
+    >
+      <view
+        class="quick-item"
+        wx:for="{{quickPrompts}}"
+        wx:key="title"
+        data-prompt="{{item.prompt}}"
+        bindtap="onQuickTap"
+      >{{item.title}}</view>
+    </scroll-view>
+
+    <view class="composer-box">
+      <textarea
+        class="input"
+        value="{{input}}"
+        maxlength="1000"
+        auto-height
+        confirm-type="send"
+        bindinput="onInput"
+        bindconfirm="onSend"
+        placeholder="描述你的学习目标…"
+        placeholder-class="ph"
+        adjust-position
+        show-confirm-bar="{{false}}"
+      />
+      <view class="send {{canSend ? 'send-on' : 'send-off'}}" bindtap="onSend">发送</view>
+    </view>
+  </view>
+</view>

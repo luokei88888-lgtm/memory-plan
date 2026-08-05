@@ -1,0 +1,16 @@
+{
+  "name": "memory-plan",
+  "version": "0.1.0",
+  "description": "忆习：AI 学习计划 + 艾宾浩斯遗忘曲线复习（微信小程序 + 云开发）",
+  "private": true,
+  "scripts": {
+    "install:functions": "node scripts/install-functions.js",
+    "lint": "eslint \"miniprogram/**/*.js\" \"cloudfunctions/**/*.js\" --ignore-pattern \"**/node_modules/**\"",
+    "format": "prettier --write \"miniprogram/**/*.js\" \"cloudfunctions/**/*.js\" \"docs/**/*.md\""
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.3"
+  },
+  "license": "MIT"
+}

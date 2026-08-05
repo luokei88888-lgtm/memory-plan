@@ -1,0 +1,7 @@
+{
+  "name": "mp-common",
+  "version": "1.0.0",
+  "description": "忆习云函数公共模块（去重共享）",
+  "main": "index.js",
+  "license": "MIT"
+}

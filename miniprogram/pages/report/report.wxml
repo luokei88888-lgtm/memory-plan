@@ -1,0 +1,107 @@
+<view class="page theme-{{themeMode}}" wx:if="{{!loading && report}}">
+  <!-- 连续天数横幅 -->
+  <view class="hero">
+    <view class="hero-top">
+      <view class="hero-left">
+        <view class="hero-label">学习报告 · {{dateLabel}}</view>
+        <view class="hero-streak">连续 {{report.streak}} 天</view>
+        <view class="hero-desc">{{streakDesc}}</view>
+      </view>
+      <view class="hero-pill">{{statusPill}}</view>
+    </view>
+  </view>
+
+  <!-- 学习概览 -->
+  <view class="section-head">
+    <view class="section-title">学习概览</view>
+    <view class="section-sub">本周数据</view>
+  </view>
+  <view class="stat-grid">
+    <view class="stat-item">
+      <view class="stat-icon icon-teal">↑</view>
+      <view class="stat-num">{{report.todayReviewCount}}</view>
+      <view class="stat-label">今日复习</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-icon icon-gold">⏱</view>
+      <view class="stat-num">{{report.dueCount}}</view>
+      <view class="stat-label">待复习</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-icon icon-purple">▣</view>
+      <view class="stat-num">{{report.totalReviewCount}}</view>
+      <view class="stat-label">累计复习</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-icon icon-pink">★</view>
+      <view class="stat-num">{{report.masteryRate}}%</view>
+      <view class="stat-label">掌握率</view>
+    </view>
+  </view>
+
+  <!-- 卡片概况 -->
+  <view class="section-head">
+    <view class="section-title">卡片概况</view>
+    <view class="section-sub">全部卡片</view>
+  </view>
+  <view class="card">
+    <view class="row-line">
+      <text>记忆卡片</text>
+      <text class="strong">{{report.cardTotal}}</text>
+    </view>
+    <view class="row-line">
+      <text>已掌握</text>
+      <text class="strong">{{report.masteredCount}}</text>
+    </view>
+    <view class="row-line">
+      <text>进行中计划</text>
+      <text class="strong">{{report.planCount}}</text>
+    </view>
+  </view>
+
+  <!-- 近 7 天 -->
+  <view class="section-head">
+    <view class="section-title">近 7 天复习</view>
+    <view class="section-sub">次数与质量</view>
+  </view>
+  <view class="card chart-card">
+    <view class="chart-wrap">
+      <canvas
+        canvas-id="weekChart"
+        class="week-canvas"
+        style="width: {{chartWidth}}px; height: {{chartHeight}}px;"
+        bindtouchstart="onChartTouch"
+      ></canvas>
+      <view class="chart-tip" wx:if="{{chartTip.show}}" style="left: {{chartTip.left}}px;">
+        <view class="chart-tip-date">{{chartTip.day}}</view>
+        <view class="chart-tip-row">
+          <view class="legend-dot dot-count"></view>
+          <text>复习：{{chartTip.count}}</text>
+        </view>
+        <view class="chart-tip-row">
+          <view class="legend-dot dot-forgot"></view>
+          <text>忘了：{{chartTip.forgot}}</text>
+        </view>
+        <view class="chart-tip-row">
+          <view class="legend-dot dot-fuzzy"></view>
+          <text>模糊：{{chartTip.fuzzy}}</text>
+        </view>
+        <view class="chart-tip-row">
+          <view class="legend-dot dot-remembered"></view>
+          <text>记住：{{chartTip.remembered}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="chart-legend">
+      <view class="legend-item" wx:for="{{chartSeries}}" wx:key="key">
+        <view class="legend-dot" style="background: {{item.color}};"></view>
+        <text class="legend-text">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="btn-main" bindtap="goReview">去复习</view>
+</view>
+
+<view class="page loading-state theme-{{themeMode}}" wx:elif="{{loading}}">加载中…</view>
+<view class="page empty-state theme-{{themeMode}}" wx:else>暂时没有报告数据，先去复习几张卡片吧</view>

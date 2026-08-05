@@ -1,0 +1,46 @@
+<view class="page">
+  <view class="intro card">
+    <view class="intro-title">{{isPrimary ? '上传主资料' : '上传学习资料'}}</view>
+    <view class="muted">{{introText}}</view>
+  </view>
+
+  <view class="field">
+    <view class="field-label">资料标题（可选）</view>
+    <input
+      class="title-input"
+      value="{{title}}"
+      maxlength="40"
+      placeholder="例如：多线程笔记"
+      placeholder-class="ph"
+      bindinput="onTitleInput"
+    />
+  </view>
+
+  <view class="field">
+    <view class="field-label">资料正文（可与文件二选一）</view>
+    <textarea
+      class="content-input"
+      value="{{content}}"
+      maxlength="10000"
+      placeholder="把要复习的内容粘贴到这里（至少 20 字）…"
+      placeholder-class="ph"
+      bindinput="onContentInput"
+      show-confirm-bar="{{false}}"
+      disable-default-padding="{{true}}"
+      adjust-keyboard-to="bottom"
+    />
+  </view>
+
+  <view class="file-tip muted" wx:if="{{pdfName}}">已选择：{{pdfName}}</view>
+
+  <view class="actions">
+    <view class="btn-ghost" bindtap="chooseFile">选择 PDF / txt / md</view>
+    <view class="btn-main {{canSubmit ? '' : 'btn-off'}}" bindtap="onSubmit">
+      {{submitting ? '处理中…' : submitLabel}}
+    </view>
+  </view>
+
+  <view class="note muted">
+    PDF 选完后自动上传。单文件约 50MB 内；页数再多也会从全文前/中/后抽页解析（不必整本扫完）。扫描版图片 PDF 可能提不出文字，请用可选中文本的 PDF，或直接粘贴正文。超过 50MB 请按章节拆分上传。
+  </view>
+</view>

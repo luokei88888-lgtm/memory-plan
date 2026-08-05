@@ -1,0 +1,123 @@
+<view class="page theme-{{themeMode}}" wx:if="{{plan}}">
+  <view class="hero-card">
+    <view class="hero-top">
+      <view class="status-pill status-{{plan.status || 'active'}}">{{statusLabel}}</view>
+    </view>
+    <view class="title">{{plan.title}}</view>
+    <view class="goal">{{plan.goal}}</view>
+    <view class="ai-disclaimer hero-ai-tip">{{aiDisclaimer}}</view>
+    <view class="meta muted">
+      {{plan.weeks.length || 0}} 周计划 · {{cards.length}} 张复习卡片
+    </view>
+  </view>
+
+  <view class="banner banner-draft" wx:if="{{isDraft && !canBuildPlan}}">
+    <view class="banner-title">还差一步：上传学习资料</view>
+    <view class="banner-desc">计划和复习卡片都会基于你的资料生成，请先上传笔记、讲义、词表或面经。</view>
+    <view class="btn-banner" bindtap="goMaterial">去上传资料</view>
+  </view>
+
+  <view class="banner banner-draft" wx:if="{{isDraft && canBuildPlan}}">
+    <view class="banner-title">资料已上传，可生成计划</view>
+    <view class="banner-desc">若刚才超时，可点下方重试；成功后请确认周安排再出复习卡片。</view>
+    <view class="btn-banner" bindtap="onBuildPlan">
+      {{buildingPlan ? '生成中…' : '根据资料生成计划'}}
+    </view>
+  </view>
+
+  <view class="banner banner-pending" wx:if="{{isPendingConfirm}}">
+    <view class="banner-title">请确认下方学习计划</view>
+    <view class="banner-desc">确认后将生成第 1 周复习卡片；之后可按周继续生成。</view>
+    <view class="btn-banner" bindtap="onConfirmPlan">
+      {{confirming ? '处理中…' : '确认计划并生成第 1 周卡片'}}
+    </view>
+  </view>
+
+  <view class="manage-bar" wx:if="{{canManage}}">
+    <view class="manage-btn" wx:if="{{isActive}}" bindtap="onPause">暂停</view>
+    <view class="manage-btn" wx:if="{{isPaused || isArchived}}" bindtap="onResume">恢复</view>
+    <view class="manage-btn" wx:if="{{isActive || isPaused}}" bindtap="onArchive">归档</view>
+    <view class="manage-btn danger" bindtap="onDelete">删除</view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === 'weeks' ? 'tab-on' : ''}}" data-tab="weeks" bindtap="switchTab">学什么</view>
+    <view class="tab {{tab === 'cards' ? 'tab-on' : ''}}" data-tab="cards" bindtap="switchTab">怎么考</view>
+    <view class="tab {{tab === 'materials' ? 'tab-on' : ''}}" data-tab="materials" bindtap="switchTab">资料</view>
+  </view>
+
+  <block wx:if="{{tab === 'weeks'}}">
+    <view class="section-hint" wx:if="{{isDraft}}">上传资料后将生成按周学习路线</view>
+    <view class="section-hint" wx:elif="{{isPendingConfirm}}">请核对周安排，可确认后开始出卡</view>
+    <view class="section-hint" wx:else>按周学习路线，复习卡片来自你的资料</view>
+    <view wx:if="{{!plan.weeks.length}}" class="empty-mat muted">暂无周安排</view>
+    <view class="timeline" wx:else>
+      <view class="week-card" wx:for="{{plan.weeks}}" wx:key="week">
+        <view class="line" wx:if="{{index < plan.weeks.length - 1}}"></view>
+        <view class="dot">{{item.week}}</view>
+        <view class="week-body">
+          <view class="week-title">{{item.theme}}</view>
+          <view class="topic" wx:for="{{item.topics}}" wx:for-item="topic" wx:key="*this">{{topic}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:elif="{{tab === 'cards'}}">
+    <view class="section-hint">复习用问答卡片：正面提问，背面参考答案</view>
+    <view
+      wx:if="{{canGenerateNextWeek}}"
+      class="btn-upload"
+      bindtap="onGenerateNextWeek"
+    >生成第 {{nextWeekToGenerate}} 周卡片</view>
+    <view wx:if="{{!cards.length}}" class="empty-mat muted">
+      {{isDraft ? '请先上传资料并确认计划' : (isPendingConfirm ? '确认计划后将生成第 1 周卡片' : '暂无卡片')}}
+    </view>
+    <view class="qa-card" wx:for="{{cards}}" wx:key="_id">
+      <view class="qa-index">{{index + 1}}</view>
+      <view class="qa-body">
+        <view class="q">{{item.question}}</view>
+        <view class="muted">{{item.topic}}{{item.week ? ' · 第' + item.week + '周' : ''}}</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="section-hint" wx:if="{{isDraft}}">上传主资料后生成学习计划（先不出卡）</view>
+    <view class="section-hint" wx:elif="{{isActive}}">可继续追加资料并生成更多复习题</view>
+    <view class="section-hint" wx:else>确认计划前请先使用已有主资料</view>
+    <view
+      class="btn-upload {{canUpload ? '' : 'btn-disabled'}}"
+      bindtap="goMaterial"
+    >{{isDraft ? '+ 上传主资料并生成计划' : '+ 添加资料并生成卡片'}}</view>
+    <view wx:if="{{!materials.length}}" class="empty-mat muted">还没有资料，可粘贴笔记或选择 PDF / txt / md</view>
+    <view class="mat-card" wx:for="{{materials}}" wx:key="_id">
+      <view class="mat-title">{{item.title}}</view>
+      <view class="muted">
+        {{item.isPrimary ? '主资料 · ' : ''}}已关联 {{item.cardCount || 0}} 张卡片
+      </view>
+    </view>
+  </block>
+
+  <view class="bottom-space"></view>
+  <view class="bottom-bar">
+    <view
+      wx:if="{{isDraft}}"
+      class="btn-main-full"
+      bindtap="goMaterial"
+    >上传学习资料</view>
+    <view
+      wx:elif="{{isPendingConfirm}}"
+      class="btn-main-full"
+      bindtap="onConfirmPlan"
+    >{{confirming ? '处理中…' : '确认计划并开始'}}</view>
+    <view
+      wx:else
+      class="btn-main-full {{canReview ? '' : 'btn-secondary'}}"
+      bindtap="goReview"
+    >{{canReview ? '开始复习这些卡片' : '去今日复习'}}</view>
+  </view>
+</view>
+
+<view class="page empty-state" wx:elif="{{loading}}">加载中…</view>
+<view class="page empty-state" wx:else>计划不存在或已删除</view>

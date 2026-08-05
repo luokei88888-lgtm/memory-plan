@@ -1,0 +1,288 @@
+.page {
+  padding: 24rpx 28rpx 56rpx;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+/* —— 英雄区 —— */
+.hero {
+  background: linear-gradient(145deg, #2a4a55 0%, #1c2b3a 100%);
+  border-radius: 28rpx;
+  padding: 32rpx 28rpx;
+  color: #fff;
+  margin-bottom: 32rpx;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.hero-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-label {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 14rpx;
+}
+
+.hero-streak {
+  font-size: 48rpx;
+  font-weight: 720;
+  color: #f0d48a;
+  line-height: 1.2;
+  margin-bottom: 12rpx;
+}
+
+.hero-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.45;
+}
+
+.hero-pill {
+  flex-shrink: 0;
+  margin-top: 8rpx;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+/* —— 分区标题 —— */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 8rpx 4rpx 16rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 720;
+  color: var(--ink);
+}
+
+.section-sub {
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+/* —— 学习概览 2x2 —— */
+.stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+}
+
+.stat-item {
+  position: relative;
+  width: 48.5%;
+  margin-bottom: 16rpx;
+  background: var(--card);
+  border-radius: 22rpx;
+  padding: 28rpx 24rpx 24rpx;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  border: 1rpx solid var(--line);
+}
+
+.stat-icon {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 12rpx;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.icon-teal {
+  background: #d9ebe8;
+  color: #2f6f6a;
+}
+
+.icon-gold {
+  background: #f3e7c8;
+  color: #c9a24d;
+}
+
+.icon-purple {
+  background: #e4e8f7;
+  color: #6b7cc9;
+}
+
+.icon-pink {
+  background: #f0dde8;
+  color: #c97a9a;
+}
+
+.stat-num {
+  font-size: 44rpx;
+  font-weight: 720;
+  color: var(--ink);
+  margin-bottom: 8rpx;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+/* —— 白卡片列表 —— */
+.card {
+  background: var(--card);
+  border-radius: 24rpx;
+  padding: 8rpx 28rpx;
+  margin-bottom: 28rpx;
+  box-shadow: var(--shadow);
+  border: 1rpx solid var(--line);
+}
+
+.row-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28rpx 0;
+  color: #3d5166;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #eef2f5;
+}
+
+.row-line:last-child {
+  border-bottom: none;
+}
+
+.strong {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 30rpx;
+}
+
+/* —— 折线图 —— */
+.chart-card {
+  padding: 24rpx 16rpx 20rpx;
+  overflow: hidden;
+  margin-bottom: 28rpx;
+}
+
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.week-canvas {
+  width: 100%;
+  height: 200px;
+  display: block;
+}
+
+.chart-tip {
+  position: absolute;
+  top: 8px;
+  width: 128px;
+  padding: 10px 12px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  pointer-events: none;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.chart-tip-date {
+  font-size: 20rpx;
+  color: var(--muted);
+  margin-bottom: 8rpx;
+}
+
+.chart-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 22rpx;
+  color: var(--ink);
+  font-weight: 650;
+  margin-top: 4rpx;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx 28rpx;
+  margin-top: 12rpx;
+  padding: 0 8rpx;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.legend-dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #2f6f6a;
+  flex-shrink: 0;
+}
+
+.dot-count {
+  background: #5b6b7a;
+}
+
+.dot-forgot {
+  background: #d45b4a;
+}
+
+.dot-fuzzy {
+  background: #e0b33c;
+}
+
+.dot-remembered {
+  background: #2fa36b;
+}
+
+.legend-text {
+  font-size: 22rpx;
+  color: #7a8b9c;
+}
+
+.btn-main {
+  text-align: center;
+  background: #2f6f6a;
+  color: #fff;
+  border-radius: 999rpx;
+  font-weight: 650;
+  font-size: 30rpx;
+  padding: 26rpx 0;
+  box-shadow: 0 10rpx 24rpx rgba(47, 111, 106, 0.25);
+}
+
+.loading-state,
+.empty-state {
+  text-align: center;
+  color: #9aa8b4;
+  padding: 120rpx 40rpx;
+  font-size: 28rpx;
+}

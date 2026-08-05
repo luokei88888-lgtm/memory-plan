@@ -1,0 +1,63 @@
+<view class="page theme-{{themeMode}}">
+  <view class="profile-card">
+    <image class="avatar" src="/images/logo.jpg" mode="aspectFit" />
+    <view class="profile-text">
+      <view class="name">忆习学员</view>
+      <view class="profile-sub">AI 规划 · 卡片复习</view>
+    </view>
+  </view>
+
+  <view class="section-label">学习</view>
+  <view class="cell-group">
+    <view class="cell" bindtap="goPlans">
+      <view class="cell-main">
+        <view class="cell-title">我的计划</view>
+        <view class="cell-desc">暂停 · 归档 · 删除</view>
+      </view>
+      <text class="cell-arrow">›</text>
+    </view>
+
+    <view class="cell" bindtap="goReport">
+      <view class="cell-main">
+        <view class="cell-title">学习报告</view>
+        <view class="cell-desc">连续天数 · 掌握率 · 近 7 日复习</view>
+      </view>
+      <text class="cell-arrow">›</text>
+    </view>
+
+    <!-- 用普通 cell 左对齐；button 仅作透明热区，避免 button 默认居中 -->
+    <view class="cell cell-share-row">
+      <view class="cell-main">
+        <view class="cell-title">分享得次数</view>
+        <view class="cell-desc">{{shareHint}}</view>
+      </view>
+      <text class="cell-arrow">›</text>
+      <button class="share-hotspot" open-type="share" hover-class="none"></button>
+    </view>
+  </view>
+
+  <view class="section-label">显示</view>
+  <view class="cell-group">
+    <view class="cell cell-theme">
+      <image class="cell-theme-icon" src="/images/icon-moon.png" mode="aspectFit" />
+      <view class="cell-main">
+        <view class="cell-title">夜间模式</view>
+        <view class="cell-desc">护眼学习，减轻夜间刺眼</view>
+      </view>
+      <switch
+        class="theme-switch"
+        checked="{{isDark}}"
+        color="#2F6F6A"
+        bindchange="onThemeSwitch"
+      />
+    </view>
+  </view>
+
+  <view class="section-label">学习小贴士</view>
+  <view class="cell-group">
+    <view class="cell tip" wx:for="{{tips}}" wx:key="*this">
+      <view class="tip-dot"></view>
+      <view class="tip-text">{{item}}</view>
+    </view>
+  </view>
+</view>

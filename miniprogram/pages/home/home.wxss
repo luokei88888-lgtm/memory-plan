@@ -1,0 +1,494 @@
+.page {
+  padding: 20rpx 32rpx 48rpx;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28rpx;
+  padding-top: 8rpx;
+  gap: 16rpx;
+}
+
+.header-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+}
+
+.brand-logo {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 14rpx;
+  flex-shrink: 0;
+}
+
+.greeting {
+  font-size: 48rpx;
+  font-weight: 720;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: 1rpx;
+}
+
+.date-line {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: var(--accent);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* 方案 E：顶栏日月快切（标准图标） */
+.theme-quick {
+  width: 72rpx;
+  height: 72rpx;
+  margin-top: 2rpx;
+  border-radius: 50%;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.theme-quick-hover {
+  background: var(--accent-soft);
+}
+
+.theme-quick-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* —— 今日待复习 —— */
+.task-card {
+  background: var(--card);
+  border-radius: 28rpx;
+  padding: 28rpx 28rpx 32rpx;
+  box-shadow: var(--shadow);
+  margin-bottom: 24rpx;
+  border: 1rpx solid var(--line);
+}
+
+.task-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.task-label {
+  font-size: 24rpx;
+  color: var(--muted);
+  font-weight: 500;
+  padding-top: 8rpx;
+}
+
+.ring {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ring-inner {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ring-text {
+  font-size: 24rpx;
+  font-weight: 720;
+  color: var(--ink);
+  line-height: 1;
+  text-align: center;
+}
+
+.task-main {
+  display: flex;
+  align-items: flex-end;
+  gap: 16rpx;
+  margin-bottom: 36rpx;
+  margin-top: 4rpx;
+}
+
+.task-num {
+  font-size: 108rpx;
+  font-weight: 720;
+  color: var(--gold);
+  line-height: 0.9;
+  letter-spacing: -4rpx;
+  font-family: 'Songti SC', 'STSong', 'Noto Serif SC', Georgia, serif;
+}
+
+.task-unit {
+  padding-bottom: 12rpx;
+}
+
+.task-unit-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10rpx;
+}
+
+.task-hint {
+  font-size: 22rpx;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.task-actions {
+  display: flex;
+  gap: 16rpx;
+}
+
+.btn-main,
+.btn-sub {
+  flex: 1;
+  text-align: center;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 650;
+  padding: 24rpx 0;
+}
+
+.btn-main {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-main-disabled {
+  background: #6a7784;
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 0.7;
+}
+
+.theme-light .btn-main-disabled {
+  background: #c5d0d4;
+  color: #fff;
+  opacity: 1;
+}
+
+.btn-sub {
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+}
+
+/* —— 进行中计划 —— */
+.plan-card {
+  background: linear-gradient(160deg, #243447 0%, #1a2634 100%);
+  border-radius: 28rpx;
+  padding: 28rpx 28rpx 30rpx;
+  margin-bottom: 36rpx;
+  color: #fff;
+}
+
+.theme-dark .plan-card {
+  background: linear-gradient(160deg, #2a3d52 0%, #1e2c3c 100%);
+  border: 1rpx solid #334556;
+}
+
+.plan-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.plan-label {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.plan-manage {
+  font-size: 24rpx;
+  font-weight: 650;
+  color: #e4c27a;
+}
+
+.plan-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 22rpx;
+  color: #fff;
+}
+
+.plan-bar {
+  height: 10rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  margin-bottom: 14rpx;
+}
+
+.plan-bar-fill {
+  height: 100%;
+  border-radius: 999rpx;
+  background: #3d9b8f;
+  min-width: 0;
+  transition: width 0.3s ease;
+}
+
+.plan-meta {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.plan-empty {
+  background: var(--card);
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx;
+  margin-bottom: 36rpx;
+  text-align: center;
+  border: 1rpx dashed var(--line);
+}
+
+.plan-empty-title {
+  font-size: 30rpx;
+  font-weight: 650;
+  margin-bottom: 8rpx;
+  color: var(--ink);
+}
+
+.plan-empty-desc {
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+/* —— 场景入口 —— */
+.section-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 20rpx;
+}
+
+.section-title {
+  margin: 0;
+  font-size: 34rpx;
+  font-weight: 720;
+  color: var(--ink);
+}
+
+.section-link {
+  font-size: 24rpx;
+  color: var(--muted);
+}
+
+.scene-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.scene-card {
+  display: flex;
+  flex-direction: column;
+  width: 31.5%;
+  margin-bottom: 16rpx;
+  padding: 22rpx 16rpx 24rpx;
+  background: var(--card);
+  border-radius: 24rpx;
+  box-shadow: var(--shadow);
+  box-sizing: border-box;
+  min-width: 0;
+  border: 1rpx solid transparent;
+}
+
+.scene-card.tone-teal {
+  background: #eef6f4;
+}
+
+.scene-card.tone-gold {
+  background: #faf5ea;
+}
+
+.scene-card.tone-slate {
+  background: #f0f3fa;
+}
+
+.scene-card.tone-rose {
+  background: #faf0f5;
+}
+
+.scene-card.tone-sage {
+  background: #f0f7f2;
+}
+
+.scene-card.tone-clay {
+  background: #f8f2ec;
+}
+
+.theme-dark .scene-card.tone-teal {
+  background: #1e3030;
+  border-color: #2a4040;
+}
+
+.theme-dark .scene-card.tone-gold {
+  background: #2e2a1e;
+  border-color: #3d3828;
+}
+
+.theme-dark .scene-card.tone-slate {
+  background: #222836;
+  border-color: #2e3648;
+}
+
+.theme-dark .scene-card.tone-rose {
+  background: #2c2228;
+  border-color: #3a2e36;
+}
+
+.theme-dark .scene-card.tone-sage {
+  background: #1e2c24;
+  border-color: #2a3a30;
+}
+
+.theme-dark .scene-card.tone-clay {
+  background: #2c2620;
+  border-color: #3a342c;
+}
+
+.scene-icon {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.scene-icon-search {
+  background: #d9ebe8;
+}
+
+.scene-icon-grid {
+  background: #f3e7c8;
+}
+
+.scene-icon-star {
+  background: #dde4f5;
+}
+
+.scene-icon-heart {
+  background: #f0dde8;
+}
+
+.scene-icon-lang {
+  background: #e2efe4;
+}
+
+.scene-icon-book {
+  background: #f0e4d8;
+}
+
+.theme-dark .scene-icon-search {
+  background: #2a4542;
+}
+
+.theme-dark .scene-icon-grid {
+  background: #4a3f24;
+}
+
+.theme-dark .scene-icon-star {
+  background: #2e3650;
+}
+
+.theme-dark .scene-icon-heart {
+  background: #4a3040;
+}
+
+.theme-dark .scene-icon-lang {
+  background: #2a4034;
+}
+
+.theme-dark .scene-icon-book {
+  background: #43362c;
+}
+
+.icon-glyph {
+  font-size: 30rpx;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.scene-icon-search .icon-glyph {
+  color: #2f6f6a;
+}
+
+.scene-icon-grid .icon-glyph {
+  color: #c9a24d;
+}
+
+.scene-icon-star .icon-glyph {
+  color: #5b6fbf;
+}
+
+.theme-dark .scene-icon-star .icon-glyph {
+  color: #9aabef;
+}
+
+.scene-icon-heart .icon-glyph {
+  color: #c97a9a;
+}
+
+.scene-icon-lang .icon-glyph {
+  color: #3d7a52;
+}
+
+.theme-dark .scene-icon-lang .icon-glyph {
+  color: #7cbc90;
+}
+
+.scene-icon-book .icon-glyph {
+  color: #8a5a3a;
+}
+
+.theme-dark .scene-icon-book .icon-glyph {
+  color: #d0a078;
+}
+
+.scene-card-title {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8rpx;
+}
+
+.scene-card-desc {
+  font-size: 20rpx;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.loading-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 24rpx 0;
+  font-size: 24rpx;
+}

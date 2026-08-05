@@ -1,0 +1,291 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.msgs {
+  flex: 1;
+  height: 0;
+  padding: 12rpx 24rpx 0;
+  box-sizing: border-box;
+}
+
+.welcome {
+  padding: 80rpx 24rpx 40rpx;
+  text-align: center;
+}
+
+.welcome-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  margin: 0 auto 24rpx;
+  border-radius: 28rpx;
+  display: block;
+}
+
+.welcome-title {
+  font-size: 40rpx;
+  font-weight: 720;
+  margin-bottom: 12rpx;
+  color: var(--ink);
+}
+
+.welcome-desc {
+  color: var(--muted);
+  font-size: 26rpx;
+  line-height: 1.55;
+  margin-bottom: 16rpx;
+  padding: 0 20rpx;
+}
+
+.welcome .ai-disclaimer {
+  margin-bottom: 28rpx;
+}
+
+.welcome-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 4rpx;
+}
+
+.welcome-chip {
+  width: 31.5%;
+  margin-bottom: 16rpx;
+  box-sizing: border-box;
+  padding: 18rpx 8rpx;
+  text-align: center;
+  border: none;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.tone-teal {
+  background: #d9ebe8;
+  color: #2f6f6a;
+}
+
+.tone-gold {
+  background: #f3e7c8;
+  color: #9a7420;
+}
+
+.tone-slate {
+  background: #dde4f5;
+  color: #4a5f9e;
+}
+
+.tone-rose {
+  background: #f0dde8;
+  color: #a85f7d;
+}
+
+.tone-sage {
+  background: #e2efe4;
+  color: #3d7a52;
+}
+
+.tone-clay {
+  background: #f0e4d8;
+  color: #8a5a3a;
+}
+
+.theme-dark .tone-teal {
+  background: #1e3030;
+  color: #7ecfc4;
+}
+
+.theme-dark .tone-gold {
+  background: #2e2a1e;
+  color: #e0c06a;
+}
+
+.theme-dark .tone-slate {
+  background: #222836;
+  color: #9aabef;
+}
+
+.theme-dark .tone-rose {
+  background: #2c2228;
+  color: #e0a0b8;
+}
+
+.theme-dark .tone-sage {
+  background: #1e2c24;
+  color: #7cbc90;
+}
+
+.theme-dark .tone-clay {
+  background: #2c2620;
+  color: #d0a078;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 22rpx;
+  gap: 12rpx;
+}
+
+.row-user {
+  justify-content: flex-end;
+}
+
+.avatar {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 18rpx;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.bubble {
+  max-width: 76%;
+  padding: 22rpx 26rpx;
+  border-radius: 24rpx;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 28rpx;
+}
+
+.row-user .bubble {
+  background: var(--accent);
+  color: #fff;
+  border-bottom-right-radius: 8rpx;
+}
+
+.row-ai .bubble {
+  background: var(--card);
+  color: var(--ink);
+  border: 1rpx solid var(--line);
+  border-bottom-left-radius: 8rpx;
+  box-shadow: var(--shadow);
+}
+
+.plan-link {
+  margin-top: 16rpx;
+  padding-top: 14rpx;
+  border-top: 1rpx solid rgba(47, 111, 106, 0.15);
+  color: var(--accent);
+  font-weight: 650;
+  font-size: 26rpx;
+}
+
+.row-user .plan-link {
+  border-top-color: rgba(255, 255, 255, 0.25);
+  color: #f0d48a;
+}
+
+.typing {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  min-width: 96rpx;
+  padding: 28rpx 30rpx;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.45;
+}
+
+.msgs-pad {
+  height: 24rpx;
+}
+
+/* —— 底部输入坞（AI 一体胶囊） —— */
+.dock {
+  flex-shrink: 0;
+  background: var(--card);
+  border-top: 1rpx solid var(--line);
+  padding: 16rpx 24rpx 20rpx;
+  box-shadow: 0 -4rpx 24rpx rgba(28, 43, 58, 0.04);
+}
+
+.quick-bar {
+  width: 100%;
+  height: 64rpx;
+  margin-bottom: 16rpx;
+  white-space: nowrap;
+}
+
+.quick-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56rpx;
+  padding: 0 24rpx;
+  margin-right: 12rpx;
+  background: var(--accent-soft);
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  color: var(--ink-soft);
+  font-weight: 500;
+  line-height: 1;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+/* 输入 + 发送同处一颗胶囊；多行时发送贴底 */
+.composer-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 16rpx;
+  min-height: 88rpx;
+  padding: 16rpx 14rpx 16rpx 28rpx;
+  background: var(--accent-soft);
+  border-radius: 36rpx;
+  box-sizing: border-box;
+  border: 1rpx solid var(--line);
+}
+
+.input {
+  flex: 1;
+  width: 0;
+  min-height: 44rpx;
+  max-height: 200rpx;
+  padding: 10rpx 0;
+  margin-bottom: 4rpx;
+  background: transparent;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: var(--ink);
+  border: none;
+}
+
+.ph {
+  color: #9aa8b4;
+}
+
+.send {
+  flex-shrink: 0;
+  min-width: 112rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  border-radius: 999rpx;
+  font-size: 26rpx;
+  font-weight: 650;
+}
+
+.send-on {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 6rpx 16rpx rgba(47, 111, 106, 0.28);
+}
+
+.send-off {
+  background: #d5dde4;
+  color: #ffffff;
+  opacity: 0.85;
+}
