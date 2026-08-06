@@ -5,7 +5,7 @@ App({
   globalData: {
     userId: null,
     openid: null,
-    cloudEnv: 'txy-ysgj-d2g7z09254d9cef68',
+    cloudEnv: '',
     loginReady: null,
     themeMode: 'light'
   },
